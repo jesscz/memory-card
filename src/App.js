@@ -64,13 +64,13 @@ function App() {
         response = response.json()
           .then(data => {
               console.log(i)
-              setCurrPokemon({
+              setCurrPokemon(currPokemon => ({
                 ...currPokemon,
                 [i]: {
                   ...currPokemon[i],
                   name: data.name
                 }
-              })
+              }))
             
               console.log('name:' +data.name)
           

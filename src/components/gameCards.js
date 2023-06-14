@@ -1,14 +1,12 @@
 import React from "react";
 
-function Cards({ currPokemon, setCurrPokemon }) {
-  let cards = [];
-  
-  for (let i = 0; i < 5; i++){
-    cards.push(<img src={currPokemon[i].image}/>)
-  }
+function Cards({ i, currPokemon }) {
   return(
     <div>
-      {cards}
+      <span>
+        {currPokemon[i].name}
+      </span>
+      <img src={currPokemon[i].image} alt={currPokemon[i].name}/>
     </div>
   )
 }

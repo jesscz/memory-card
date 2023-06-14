@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Cards from "./components/gameCards";
 
 function App() {
+
   const [currPokemon, setCurrPokemon] = useState({
     0: {
       number: 0,
@@ -31,17 +32,6 @@ function App() {
   })
 
   let randomNum = []
-
-  
-  
-  // const [randomNum, setRandomNum] = useState([])
-  
-  
-  // const pokemonImgUrlArr = []
-  
-  // for (let i = 0; i < randomNum.length; i++){
-  //   pokemonImgUrlArr.push(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${randomNum[i]}.png`)
-  // }
  
   const getRandomNums = () => {
     if (randomNum.length === 0){
@@ -81,8 +71,15 @@ function App() {
     }
   }
 
-  
-  
+  const cards = [];
+
+  for (let i = 0; i < 5; i++){
+    cards.push(<
+      Cards
+       i = {i}
+       currPokemon={currPokemon}
+    />)
+  }
 
   useEffect(() => {
     fetchPokemonData();
@@ -91,10 +88,7 @@ function App() {
   return (
     <div id="App">
       <h1>Click a Pokémon</h1>
-      <Cards
-        currPokemon = {currPokemon}
-        setCurrPokemon = {setCurrPokemon}
-      />
+      {cards}
     </div>
   );
 

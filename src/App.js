@@ -63,38 +63,31 @@ function App() {
       .then(response => {
         response = response.json()
           .then(data => {
-              console.log(i)
+              console.log(data.sprites.front_default)
               setCurrPokemon(currPokemon => ({
                 ...currPokemon,
                 [i]: {
                   ...currPokemon[i],
-                  name: data.name
+                  image: data.sprites.front_default,
+                  name: data.name,
+                  number: num[i],
                 }
               }))
-            
-              console.log('name:' +data.name)
           
           });
         console.log(response)
       })
       .catch(error => console.error(error));
     }
-    // getRandomNums();
   }
 
-  // let images =  pokemonImgUrlArr.map((image) => {
-  //   return <img src={image} alt="pokemon"/>
-  // })
-
-  // fetchPokemonData();
+  
   
 
   useEffect(() => {
     fetchPokemonData();
-    
-    
   },[]);
-  // getRandomNums();
+
   return (
     <div id="App">
       <h1>Click a Pokémon</h1>

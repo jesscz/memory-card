@@ -1,0 +1,17 @@
+.cards{
+    display: inline-block;
+    margin: min(2vw, 50px);
+    padding: 10px;
+    border: 0.5em solid #FFCB05;
+    border-radius: 3%;
+    background-color: #ffcd05a4;
+}
+.cards > img{
+    display: flex;
+    justify-content: center;
+}
+.cards > div{
+    display: flex;
+    justify-content: center;
+    color: black;
+}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./css/App.css";
 import Cards from "./components/gameCards";
 
 function App() {
@@ -87,8 +88,16 @@ function App() {
 
   return (
     <div id="App">
-      <h1>Click a Pokémon</h1>
-      {cards}
+      <div>
+        <h1>Pokémon Memory Game</h1>
+        <div>Click a new card!</div>
+      </div>
+      <div id="cards">{cards}</div>
+      <footer>
+        <a href='https://github.com/jesscz'>
+          Copyright ©  2023 Jessie
+        </a>
+      </footer>
     </div>
   );
 

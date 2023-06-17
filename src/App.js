@@ -32,6 +32,12 @@ function App() {
     },
   })
 
+  const [score, setScore] = useState(0);
+
+  const [highScore, setHighScore] = useState(0);
+
+  const [clickedPokemon, setClickedPokemon] = useState([]);
+
   let randomNum = []
  
   const getRandomNums = () => {
@@ -45,6 +51,7 @@ function App() {
     }
     return randomNum;
   } 
+
   const fetchPokemonData = () => {
     let num = getRandomNums();
     console.log(num)
@@ -72,6 +79,14 @@ function App() {
     }
   }
 
+  const cardClick = (e) => {
+    let x = (e.currentTarget).lastChild.innerHTML; //is the number of the clicked pokemon
+    console.log(x); 
+    setClickedPokemon(clickedPokemon => ([...clickedPokemon, x]));
+    setScore(score => score + 1)
+    fetchPokemonData();
+  }
+
   const cards = [];
 
   for (let i = 0; i < 5; i++){
@@ -79,6 +94,7 @@ function App() {
       Cards
        i = {i}
        currPokemon={currPokemon}
+       cardClick={cardClick}
     />)
   }
 
@@ -88,11 +104,18 @@ function App() {
 
   return (
     <div id="App">
-      <div>
+      <div id="title">
         <h1>Pokémon Memory Game</h1>
         <div>Click a new card!</div>
       </div>
-      <div id="cards">{cards}</div>
+      <div id='score'>
+        <div>Current Score: {score}</div>
+        <div>Your high score: {highScore}</div>
+        <div>The highest score possible is 100.</div>
+      </div>
+      <div id="cards">
+        {cards}
+      </div>
       <footer>
         <a href='https://github.com/jesscz'>
           Copyright ©  2023 Jessie

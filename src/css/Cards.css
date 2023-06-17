@@ -6,12 +6,15 @@
     border-radius: 3%;
     background-color: #ffcd05a4;
 }
-.cards > img{
+.cards>img{
     display: flex;
     justify-content: center;
 }
-.cards > div{
+.cards>div{
     display: flex;
     justify-content: center;
     color: black;
+}
+.cards>div:last-of-type{
+    display: none;
 }

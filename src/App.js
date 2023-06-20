@@ -80,7 +80,7 @@ function App() {
   }
 
   const cardClick = (e) => {
-    let x = (e.currentTarget).lastChild.innerHTML; //is the number of the clicked pokemon
+    let x = parseInt((e.currentTarget).lastChild.innerHTML); //is the number of the clicked pokemon
     console.log(x); 
     setClickedPokemon(clickedPokemon => ([...clickedPokemon, x]));
     setScore(score => score + 1)

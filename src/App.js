@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./css/App.css";
 import Cards from "./components/gameCards";
+import EndOfGamePage from "./components/endOfGame.js"
 
 function App() {
 
@@ -38,6 +39,8 @@ function App() {
 
   const [clickedPokemon, setClickedPokemon] = useState([]);
 
+  const [endGame, setEndGame] = useState(false);
+
   let randomNum = []
  
   const getRandomNums = () => {
@@ -54,14 +57,11 @@ function App() {
 
   const fetchPokemonData = () => {
     let num = getRandomNums();
-    console.log(num)
     for (let i = 0; i < 5; i++){
-      
       fetch(`https://pokeapi.co/api/v2/pokemon/${num[i]}/`)
       .then(response => {
         response = response.json()
           .then(data => {
-              console.log(data.sprites.front_default)
               setCurrPokemon(currPokemon => ({
                 ...currPokemon,
                 [i]: {
@@ -73,34 +73,54 @@ function App() {
               }))
           
           });
-        console.log(response)
       })
       .catch(error => console.error(error));
     }
   }
 
+  const checkEndGame = (x) => {
+    if (clickedPokemon.includes(x)){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
   const cardClick = (e) => {
     let x = parseInt((e.currentTarget).lastChild.innerHTML); //is the number of the clicked pokemon
-    console.log(x); 
-    setClickedPokemon(clickedPokemon => ([...clickedPokemon, x]));
-    setScore(score => score + 1)
-    fetchPokemonData();
+    if (checkEndGame(x) !== true){
+      setClickedPokemon(clickedPokemon => ([...clickedPokemon, x]));
+      setScore(score => score + 1);
+      fetchPokemonData();
+    }
+    else{
+      setEndGame(true);
+    } 
   }
 
-  const cards = [];
-
-  for (let i = 0; i < 5; i++){
-    cards.push(<
-      Cards
-       i = {i}
-       currPokemon={currPokemon}
-       cardClick={cardClick}
-    />)
-  }
 
   useEffect(() => {
     fetchPokemonData();
   },[]);
+
+  const cards = [];
+
+  if (endGame === false){
+    for (let i = 0; i < 5; i++){
+      cards.push(<
+        Cards
+         i = {i}
+         currPokemon={currPokemon}
+         cardClick={cardClick}
+      />)
+    }
+  }
+  else{
+    cards.push(<
+      EndOfGamePage  
+    />)
+  }
 
   return (
     <div id="App">
@@ -123,6 +143,6 @@ function App() {
       </footer>
     </div>
   );
-
 }
+
 export default App;

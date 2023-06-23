@@ -1,4 +1,5 @@
 import React from "react";
+// import { createRoot } from "react-dom/client"
 import "../css/Cards.css";
 
 function Cards({ i, currPokemon, cardClick }) {
@@ -12,5 +13,10 @@ function Cards({ i, currPokemon, cardClick }) {
     </div>
   )
 }
+
+// const rootElement = document.getElementById("root");
+// const root = createRoot(rootElement);
+
+// root.render(<Cards />);
 
 export default Cards;

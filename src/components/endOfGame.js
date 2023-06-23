@@ -1,11 +1,11 @@
 import React from "react";
 import "../css/endGame.css"
 
-function endOfGamePage(){
+function endOfGamePage({ gameReset }){
     return(
         <div id="end">
             <p>Game Over</p>
-            <button>
+            <button onClick={gameReset}>
                 Play Again
             </button>
         </div>

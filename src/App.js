@@ -98,6 +98,13 @@ function App() {
     } 
   }
 
+  const gameReset = () => {
+    setScore(score => 0);
+    setClickedPokemon(clickedPokemon => ([]));
+    setEndGame(false);
+
+
+  }
 
   useEffect(() => {
     fetchPokemonData();
@@ -117,7 +124,8 @@ function App() {
   }
   else{
     cards.push(<
-      EndOfGamePage  
+      EndOfGamePage
+       gameReset={gameReset}  
     />)
   }
 

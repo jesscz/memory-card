@@ -71,7 +71,6 @@ function App() {
                   number: num[i],
                 }
               }))
-          
           });
       })
       .catch(error => console.error(error));

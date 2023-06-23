@@ -47,7 +47,7 @@ function App() {
     if (randomNum.length === 0){
       while (randomNum.length < 5){
         let random = Math.floor((Math.random() * 100) + 1)
-        if (randomNum.indexOf(random) === -1) { //-1 means its not in the array
+        if (randomNum.indexOf(random) === -1) { 
           randomNum.push(random);
         }
       }

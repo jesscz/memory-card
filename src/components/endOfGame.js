@@ -1,9 +1,13 @@
 import React from "react";
+import "../css/endGame.css"
 
 function endOfGamePage(){
     return(
-        <div>
-            Game Over
+        <div id="end">
+            <p>Game Over</p>
+            <button>
+                Play Again
+            </button>
         </div>
     )
 }

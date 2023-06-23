@@ -5,10 +5,14 @@
 #title>h1{
     background-color:  #CE2211;
     color: white;
-    padding: 10px;
+    padding: 18px;
 }
 #title>div{
     font-size: larger;
+    margin: 10px;
+}
+#score{
+    margin: 10px;
 }
 #cards{ /* this is the div outside all of the cards */
     display: flex;

@@ -129,7 +129,7 @@ function App() {
       </div>
       <div id='score'>
         <div>Current Score: {score}</div>
-        <div>Your high score: {highScore}</div>
+        {/* <div>Your high score: {highScore}</div> */}
         <div>The highest score possible is 100.</div>
       </div>
       <div id="cards">

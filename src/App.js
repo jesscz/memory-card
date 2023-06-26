@@ -86,11 +86,14 @@ function App() {
     }
   }
 
+  
+
   const cardClick = (e) => {
     let x = parseInt((e.currentTarget).lastChild.innerHTML); //is the number of the clicked pokemon
     if (checkEndGame(x) !== true){
       setClickedPokemon(clickedPokemon => ([...clickedPokemon, x]));
       setScore(score => score + 1);
+      // checkHighScore();
       fetchPokemonData();
     }
     else{
@@ -102,13 +105,22 @@ function App() {
     setScore(score => 0);
     setClickedPokemon(clickedPokemon => ([]));
     setEndGame(false);
+  }
 
-
+  const checkHighScore = () => {
+    if (score > highScore){
+      setHighScore(highScore => score);
+    }
   }
 
   useEffect(() => {
     fetchPokemonData();
   },[]);
+
+  useEffect(() => {
+    
+    checkHighScore();
+  }, [checkHighScore()]);
 
   const cards = [];
 
@@ -137,7 +149,7 @@ function App() {
       </div>
       <div id='score'>
         <div>Current Score: {score}</div>
-        {/* <div>Your high score: {highScore}</div> */}
+        <div>Your high score: {highScore}</div>
         <div>The highest score possible is 100.</div>
       </div>
       <div id="cards">

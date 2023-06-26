@@ -118,7 +118,6 @@ function App() {
   },[]);
 
   useEffect(() => {
-    
     checkHighScore();
   }, [checkHighScore()]);
 
